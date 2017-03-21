@@ -8,11 +8,6 @@ typedef double             sparse_array_value_t     ;
 typedef long           int sparse_array_key_t       ;
 typedef unsigned short int cache_key_t_;
 
-#define map_shift 15
-
-
-static unsigned long map_mask = ((1 << map_shift)-1) ;
-
 
 typedef struct {
     sparse_array_value_t*  value;
@@ -37,9 +32,23 @@ typedef struct {
 } sparse_array_t;
 
 
+/* Create a new sparse array */
+sparse_array_t  sparse_array_create  (sparse_array_key_t keymax);
 
-sparse_array_t  sparse_array_init  (sparse_array_key_t  keymax);
-float           sparse_array_mb    (sparse_array_t      map);
-cache_map_t_*   cache_map_init     (size_t              size);
+/* Compute the size in MiB of the sparse array */
+float  sparse_array_mb (sparse_array_t map);
+
+/* Physical size (memory allocation) of the sparse array */
+size_t  sparse_array_size (sparse_array_t s);
+
+/* Logical size (number of elements) of the sparse array */
+size_t  sparse_array_n_elements (sparse_array_t s);
+
+/* Get the sorted status of the sparse array */
+int  sparse_array_sorted (sparse_array_t s);
+
+/* Get the consolidated status of the sparse array */
+int  sparse_array_consolidated (sparse_array_t s);
+
 
 #endif

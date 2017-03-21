@@ -9,7 +9,7 @@ float sparse_array_mb(sparse_array_t s)
 
   result = sizeof(sparse_array_t);
   for (i=0 ; i<s.size ; i++) {
-    result += sizeof(cache_map_t_) + s.map[i].size * (sizeof(sparse_array_value_t)+sizeof(cache_key_t_));
+    result += sizeof(cache_map_t_) + s.map[i]->size * (sizeof(sparse_array_value_t)+sizeof(cache_key_t_));
   }
   return ((float) result)/(1024.*1024.);
 }

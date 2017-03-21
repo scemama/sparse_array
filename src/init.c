@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include "sparse_array.h"
+#include "sparse_array_private.h"
 #include "omp.h"
 
-sparse_array_t sparse_array_init(sparse_array_key_t keymax)
+sparse_array_t sparse_array_create(sparse_array_key_t keymax)
 {
   const size_t sze=2;
 
@@ -36,3 +37,10 @@ sparse_array_t sparse_array_init(sparse_array_key_t keymax)
   omp_unset_lock( &result.lock );
   return result;
 }
+
+
+
+cache_map_t_*  cache_map_init (size_t size)
+{
+  return NULL;
+};
